@@ -16,6 +16,7 @@ import {
   DialogContentText,
 } from "@mui/material";
 import { Student } from "@/shared-fe/api/exam";
+import { useTranslation } from "react-i18next";
 
 type StudentGridProps = {
   students: Student[];
@@ -28,6 +29,8 @@ export default function StudentGrid({
   students,
   totalQuestions,
 }: StudentGridProps) {
+  const { t } = useTranslation();
+
   const [order, setOrder] = useState<Order>("asc");
   const [orderBy, setOrderBy] = useState<keyof Student>("name");
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
@@ -78,18 +81,18 @@ export default function StudentGrid({
                   direction={orderBy === "name" ? order : "asc"}
                   onClick={() => handleSort("name")}
                 >
-                  Name
+                  {t("studentGrid.name")}
                 </TableSortLabel>
               </TableCell>
-              <TableCell>Completed Questions</TableCell>
-              <TableCell>Avg Time / Question (s)</TableCell>
+              <TableCell>{t("studentGrid.completedQuestions")}</TableCell>
+              <TableCell>{t("studentGrid.avgTimePerQuestion")}</TableCell>
               <TableCell>
                 <TableSortLabel
                   active={orderBy === "score"}
                   direction={orderBy === "score" ? order : "asc"}
                   onClick={() => handleSort("score")}
                 >
-                  Score
+                  {t("studentGrid.score")}
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -98,7 +101,7 @@ export default function StudentGrid({
                   direction={orderBy === "status" ? order : "asc"}
                   onClick={() => handleSort("status")}
                 >
-                  Status
+                  {t("studentGrid.status")}
                 </TableSortLabel>
               </TableCell>
             </TableRow>
@@ -129,26 +132,26 @@ export default function StudentGrid({
         open={Boolean(selectedStudent)}
         onClose={() => setSelectedStudent(null)}
       >
-        <DialogTitle>Student Details</DialogTitle>
+        <DialogTitle>{t("studentGrid.studentDetails")}</DialogTitle>
         <DialogContent>
           {selectedStudent && (
             <>
               <DialogContentText>
-                Name: {selectedStudent.name}
+                {t("studentGrid.name")}: {selectedStudent.name}
               </DialogContentText>
               <DialogContentText>
-                Completed Questions: {selectedStudent.completedQuestions}/
+                {t("studentGrid.completedQuestions")}: {selectedStudent.completedQuestions}/
                 {totalQuestions}
               </DialogContentText>
               <DialogContentText>
-                Avg Time per Question:{" "}
+                {t("studentGrid.avgTimePerQuestion")}:{" "}
                 {selectedStudent.avgTimePerQuestion.toFixed(1)} s
               </DialogContentText>
               <DialogContentText>
-                Score: {selectedStudent.score}
+                {t("studentGrid.score")}: {selectedStudent.score}
               </DialogContentText>
               <DialogContentText>
-                Status: {selectedStudent.status}
+                {t("studentGrid.status")}: {selectedStudent.status}
               </DialogContentText>
             </>
           )}

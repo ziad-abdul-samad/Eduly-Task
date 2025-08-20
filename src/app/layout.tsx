@@ -4,12 +4,12 @@ import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { ThemeModeProvider, useThemeMode } from "@/context/ThemeModeContext";
+import { I18nProvider } from "@/context/I18nContext"; 
 
 const queryClient = new QueryClient();
 
-// Wrapper that listens to ThemeModeContext and applies correct theme
 function ThemeWrapper({ children }: { children: ReactNode }) {
-  const { mode } = useThemeMode(); // "light" | "dark"
+  const { mode } = useThemeMode(); 
 
   const theme = createTheme({
     palette: {
@@ -31,7 +31,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ThemeModeProvider>
           <QueryClientProvider client={queryClient}>
-            <ThemeWrapper>{children}</ThemeWrapper>
+            <I18nProvider>
+              <ThemeWrapper>{children}</ThemeWrapper>
+            </I18nProvider>
           </QueryClientProvider>
         </ThemeModeProvider>
       </body>

@@ -21,6 +21,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useTheme } from "@mui/material/styles";
 import { useThemeMode } from "@/context/ThemeModeContext";
+import { useI18n } from "@/context/I18nContext"; 
 
 type AppBarLayoutProps = {
   children: React.ReactNode;
@@ -32,6 +33,7 @@ export default function AppBarLayout({ children }: AppBarLayoutProps) {
 
   const theme = useTheme();
   const { toggleMode } = useThemeMode();
+  const { t } = useI18n(); 
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -54,12 +56,12 @@ export default function AppBarLayout({ children }: AppBarLayoutProps) {
       onClick={() => setMobileOpen(false)}
     >
       <Typography variant="h6" sx={{ m: 2 }}>
-        Eduly
+        {t("eduly")} 
       </Typography>
       <Divider />
       <List>
         <ListItem>
-          <ListItemText primary="Dashboard" />
+          <ListItemText primary={t("dashboard")} /> 
         </ListItem>
       </List>
     </Box>
@@ -82,7 +84,7 @@ export default function AppBarLayout({ children }: AppBarLayoutProps) {
 
           {/* Logo / Title */}
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Eduly Dashboard
+            {t("edulyDashboard")} 
           </Typography>
 
           {/* Page name on large screens */}
@@ -90,7 +92,7 @@ export default function AppBarLayout({ children }: AppBarLayoutProps) {
             variant="subtitle1"
             sx={{ display: { xs: "none", sm: "block" }, mr: 2 }}
           >
-            Dashboard
+            {t("dashboard")} 
           </Typography>
 
           {/* Dark/Light mode toggle */}
@@ -107,9 +109,9 @@ export default function AppBarLayout({ children }: AppBarLayoutProps) {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+            <MenuItem onClick={handleMenuClose}>{t("profile")}</MenuItem>
+            <MenuItem onClick={handleMenuClose}>{t("settings")}</MenuItem>
+            <MenuItem onClick={handleMenuClose}>{t("logout")}</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

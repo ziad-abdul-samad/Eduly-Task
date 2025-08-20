@@ -1,0 +1,27 @@
+{
+  "eduly": "Eduly",
+  "edulyDashboard": "Eduly Dashboard",
+  "dashboard": "Dashboard",
+  "profile": "Profile",
+  "settings": "Settings",
+  "logout": "Logout",
+  "subject": "Subject",
+  "date": "Date",
+  "totalStudents": "Total Students",
+  "totalQuestions": "Total Questions",
+  "progress": {
+    "completionStatus": "Completion Status",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started",
+    "averageScore": "Average Score"
+  },
+  "studentGrid": {
+    "name": "Name",
+    "completedQuestions": "Completed Questions",
+    "avgTimePerQuestion": "Avg Time / Question (s)",
+    "score": "Score",
+    "status": "Status",
+    "studentDetails": "Student Details"
+  }
+}

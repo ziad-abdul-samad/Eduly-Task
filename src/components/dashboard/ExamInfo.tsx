@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { useI18n } from "@/context/I18nContext"; // adjust the path if needed
 
 type ExamInfoProps = {
   title: string;
@@ -18,6 +19,8 @@ export default function ExamInfo({
   totalStudents,
   totalQuestions,
 }: ExamInfoProps) {
+  const { t } = useI18n();
+
   return (
     <Card sx={{ mb: 3 }}>
       <CardContent>
@@ -26,30 +29,30 @@ export default function ExamInfo({
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid >
+          <Grid>
             <Typography variant="subtitle1" color="text.secondary">
-              Subject
+              {t("subject")}
             </Typography>
             <Typography variant="body1">{subject}</Typography>
           </Grid>
 
-          <Grid >
+          <Grid>
             <Typography variant="subtitle1" color="text.secondary">
-              Date
+              {t("date")}
             </Typography>
             <Typography variant="body1">{date}</Typography>
           </Grid>
 
           <Grid>
             <Typography variant="subtitle1" color="text.secondary">
-              Total Students
+              {t("totalStudents")}
             </Typography>
             <Typography variant="body1">{totalStudents}</Typography>
           </Grid>
 
           <Grid>
             <Typography variant="subtitle1" color="text.secondary">
-              Total Questions
+              {t("totalQuestions")}
             </Typography>
             <Typography variant="body1">{totalQuestions}</Typography>
           </Grid>
